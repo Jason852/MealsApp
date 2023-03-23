@@ -1,4 +1,4 @@
-import { View, StyleSheet, FlatList, Text } from "react-native";
+import { View, StyleSheet, FlatList } from "react-native";
 import { MEALS } from "../data/dummy-data";
 
 import MealItem from "../components/MealItem";
