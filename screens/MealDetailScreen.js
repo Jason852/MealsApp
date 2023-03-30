@@ -2,6 +2,8 @@ import { View, Text, StyleSheet, Image } from "react-native";
 
 import { MEALS } from "../data/dummy-data";
 import MealDetails from "../components/MealDetails";
+import Subtitle from "../components/MealDetail/Subtitle";
+import List from "../components/MealDetail/List";
 
 function MealDetailScreen({ route }) {
   const mealId = route.params.mealId;
@@ -18,18 +20,11 @@ function MealDetailScreen({ route }) {
         affordability={selectedMeal.affordability}
         textStyle={styles.detailText}
       />
-      <View style={styles.subtitleContainer}>
-        <Text style={styles.subtitle}>Ingredients</Text>
-      </View>
-      {selectedMeal.ingredients.map((ingredient) => (
-        <Text key={ingredient}>{ingredient}</Text>
-      ))}
-      <View style={styles.subtitleContainer}>
-        <Text style={styles.subtitle}>Steps</Text>
-      </View>
-      {selectedMeal.steps.map((step) => (
-        <Text key={step}>{step}</Text>
-      ))}
+      <Subtitle>Ingredients</Subtitle>
+      <List data={selectedMeal.ingredients} />
+
+      <Subtitle>Steps</Subtitle>
+      <List data={selectedMeal.steps} />
     </View>
   );
 }
@@ -50,19 +45,5 @@ const styles = StyleSheet.create({
   },
   detailText: {
     color: "white",
-  },
-  subtitle: {
-    color: "#e2b497",
-    fontSize: 18,
-    fontWeight: "bold",
-    textAlign: "center",
-  },
-  subtitleContainer: {
-    margin: 4,
-    padding: 6,
-    marginHorizontal: 24,
-    marginVertical: 4,
-    borderBottomColor: "#e2b497",
-    borderBottomWidth: "2",
   },
 });
