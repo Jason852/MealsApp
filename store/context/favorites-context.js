@@ -19,7 +19,17 @@ function FavoritesContextProvider({ children }) {
     );
   }
 
-  return <FavoritesContext.Provider>{children}</FavoritesContext.Provider>;
+  const value = {
+    ids: favoriteMealIds,
+    addFavorite: addFavorite,
+    removeFavorite: removeFavorite,
+  };
+
+  return (
+    <FavoritesContext.Provider value={value}>
+      {children}
+    </FavoritesContext.Provider>
+  );
 }
 
 export default FavoritesContextProvider;
